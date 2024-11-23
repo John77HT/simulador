@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "npm run serve:ssr",  // Cambié esto para iniciar el SSR correctamente
+    "build": "ng build --prod",  // Construcción solo de la parte cliente
+    "build:ssr": "ng build --prod && ng run sistema-educativo:server:production", // Comando de construcción para SSR
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:sistema-educativo": "node dist/sistema-educativo/server/server.mjs"
+    "serve:ssr": "node dist/sistema-educativo/server/main.js",  // Correcto para iniciar el servidor SSR
+    "serve:ssr:sistema-educativo": "node dist/sistema-educativo/server/server.mjs"  // Asegúrate de que este archivo existe (no es común usar .mjs en SSR)
   },
   "private": true,
   "dependencies": {
